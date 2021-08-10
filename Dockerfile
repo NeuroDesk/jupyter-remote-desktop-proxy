@@ -3,15 +3,20 @@ FROM jupyter/base-notebook:python-3.7.6
 
 USER root
 
+# RUN apt-get -y update \
+#  && apt-get install -y dbus-x11 \
+#    firefox \
+#    xfce4 \
+#    xfce4-panel \
+#    xfce4-session \
+#    xfce4-settings \
+#    xorg \
+#    xubuntu-icon-theme
+
 RUN apt-get -y update \
  && apt-get install -y dbus-x11 \
-   firefox \
-   xfce4 \
-   xfce4-panel \
-   xfce4-session \
-   xfce4-settings \
-   xorg \
-   xubuntu-icon-theme
+   lxde-core \
+   xorg
 
 # Remove light-locker to prevent screen lock
 ARG TURBOVNC_VERSION=2.2.6
