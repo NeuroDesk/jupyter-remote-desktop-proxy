@@ -15,7 +15,8 @@ USER root
 
 RUN apt-get -y update \
  && apt-get install -y dbus-x11 \
-   lxde-core \
+   firefox \
+   lxde \
    xorg
 
 # Remove light-locker to prevent screen lock
@@ -31,6 +32,8 @@ RUN chown -R $NB_UID:$NB_GID $HOME
 
 ADD . /opt/install
 RUN fix-permissions /opt/install
+
+
 
 USER $NB_USER
 RUN cd /opt/install && \
