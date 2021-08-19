@@ -1,13 +1,4 @@
-@REM docker run -d --name neurodesk -p 8888:8888 neurodesk
-@REM set /p=running - press ENTER key to shutdown and quit!
-@REM docker stop neurodesk
-@REM docker rm neurodesk
-
-
-
-
-
-docker build -t neurodesk . --file Dockerfile && (
+docker build -t neurodesk . --file Dockerfile_focal_base && (
     echo "Starting:"
     @REM sudo docker run -d --privileged --name vnm -v /vnm:/vnm -e RESOLUTION=1600x960 -e USER=neuro -p 6080:80 -p 5900:5900 vnm:latest
     @REM docker run -d --name neurodesk -p 8888:8888 neurodesk
