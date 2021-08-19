@@ -24,9 +24,10 @@ RUN wget -q "https://sourceforge.net/projects/turbovnc/files/${TURBOVNC_VERSION}
 # apt-get may result in root-owned directories/files under $HOME
 RUN chown -R $NB_UID:$NB_GID $HOME
 
-ADD . /opt/install
-RUN fix-permissions /opt/install
+RUN conda install --name base -c conda-forge jupyter-server-proxy>=1.4 websockify pip
 
+ADD . /opt/install
 USER $NB_USER
-RUN cd /opt/install && \
-   conda env update -n base --file environment.yml
+RUN fix-permissions /opt/install
+WORKDIR /opt/install
+RUN pip install .
