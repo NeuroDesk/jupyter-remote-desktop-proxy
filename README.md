@@ -13,3 +13,11 @@ Guacamole:
 
 - username: jovyan
 - password: password
+
+
+## For Developers
+For local testing use `build_and_run.sh`
+
+For updating the binderhub image:
+1. `bash build_and_push.sh`. This will push the new image to vnmd and update binder/Dockerfile
+2. Commit and push `binder/Dockerfile` so mybinder will use the new image.
