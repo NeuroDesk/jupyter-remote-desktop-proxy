@@ -265,9 +265,9 @@ RUN rm /tmp/skipcache \
     && bash install.sh \
     && ln -s /neurodesktop-storage/containers /neurocommand/local/containers 
 
+COPY config/neurodesk.ardc.edu.au.conf /cvmfs/neurodesk.ardc.edu.au.conf
 RUN mkdir -p /cvmfs/neurodesk.ardc.edu.au /cvmfs/cache/neurodesk.ardc.edu.au /cvmfs/logs/
 RUN chown -R jovyan:users /cvmfs/neurodesk.ardc.edu.au /cvmfs/logs /cvmfs/cache
-COPY config/neurodesk.ardc.edu.au.conf /cvmfs/neurodesk.ardc.edu.au.conf
 
 USER jovyan
 WORKDIR /home/jovyan
