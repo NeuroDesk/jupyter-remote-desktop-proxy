@@ -3,6 +3,7 @@
 *.png binary
 
 # Forcing UNIX LF line endings for text files added to container
+*.conf text eol=lf
 *.sh text eol=lf
 *.xml text eol=lf
 *.xml text eol=lf
