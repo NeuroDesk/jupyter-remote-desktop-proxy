@@ -172,6 +172,7 @@ COPY ./config/rc.xml /etc/xdg/openbox
 
 # Configure ITKsnap
 COPY ./config/.itksnap.org /home/jovyan/.itksnap.org
+RUN chown jovyan /home/jovyan/.itksnap.org -R
 COPY ./config/mimeapps.list /home/jovyan/.config/mimeapps.list
 
 # Apply custom bottom panel configuration
