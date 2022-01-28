@@ -1,7 +1,7 @@
 # jupyter-remote-desktop-proxy
 
 Open in
-https://mybinder.org/v2/gh/NeuroDesk/jupyter-remote-desktop-proxy/k8s
+http://192.9.172.90/v2/gh/NeuroDesk/jupyter-remote-desktop-proxy/demo
 
 Start New > neurodesktop
 
