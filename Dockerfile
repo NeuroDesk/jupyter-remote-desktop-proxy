@@ -185,6 +185,9 @@ RUN sed -i 's/#user_allow_other/user_allow_other/g' /etc/fuse.conf
 # Fetch singularity bind mount list
 RUN mkdir -p `curl https://raw.githubusercontent.com/NeuroDesk/neurocontainers/master/recipes/globalMountPointList.txt`
 
+# Fix "No session for pid prompt"
+RUN mv /usr/bin/lxpolkit /usr/bin/lxpolkit.BAK
+
 USER jovyan
 WORKDIR /home/jovyan
 
