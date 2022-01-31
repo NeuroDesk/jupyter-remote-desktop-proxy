@@ -60,7 +60,7 @@ ENV LC_ALL en_US.UTF-8
 # Install Apache Guacamole
 ARG GUACAMOLE_VERSION
 WORKDIR /etc/guacamole
-RUN wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERSION}/source/guacamole-server-1.3.0.tar.gz" -O /etc/guacamole/guacamole-server-${GUACAMOLE_VERSION}.tar.gz \
+RUN wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERSION}/source/guacamole-server-${GUACAMOLE_VERSION}.tar.gz" -O /etc/guacamole/guacamole-server-${GUACAMOLE_VERSION}.tar.gz \
     && tar xvf /etc/guacamole/guacamole-server-${GUACAMOLE_VERSION}.tar.gz \
     && cd /etc/guacamole/guacamole-server-${GUACAMOLE_VERSION} \
     && ./configure --with-init-dir=/etc/init.d \
@@ -203,7 +203,7 @@ RUN wget https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_REL}/v${TOMCAT_V
     && tar -xf /tmp/apache-tomcat-${TOMCAT_VERSION}.tar.gz -C /tmp \
     && mv /tmp/apache-tomcat-${TOMCAT_VERSION} /home/jovyan/.tomcat \
     && rm -rf /home/jovyan/.tomcat/webapps/* \
-    && wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERSION}/binary/guacamole-1.3.0.war" -O /home/jovyan/.tomcat/webapps/ROOT.war
+    && wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERSION}/binary/guacamole-${GUACAMOLE_VERSION}.war" -O /home/jovyan/.tomcat/webapps/ROOT.war
 
 RUN pip install jupyter-server-proxy
 COPY config/jupyter_notebook_config.py  /home/jovyan/.jupyter
