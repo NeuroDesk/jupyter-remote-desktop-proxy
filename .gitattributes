@@ -14,3 +14,4 @@ novnc-vnc_lite.html.patch text eol=lf
 apt.txt text eol=lf
 build_and_run.sh text eol=lf
 xstartup text eol=lf
+jupyter_notebook_config.py text eol=lf
