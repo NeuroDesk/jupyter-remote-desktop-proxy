@@ -1,1 +1,1 @@
-FROM vnmd/jupyter-remote-desktop-proxy:20220128221914
+FROM vnmd/jupyter-remote-desktop-proxy:20220201110621
