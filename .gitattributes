@@ -6,7 +6,6 @@
 *.conf text eol=lf
 *.sh text eol=lf
 *.xml text eol=lf
-*.xml text eol=lf
 vncserver text eol=lf
 protocol.txt text eol=lf
 vncviewer.desktop text eol=lf
