@@ -1,8 +1,8 @@
 ARG GO_VERSION="1.17.2"
 ARG SINGULARITY_VERSION="3.9.3"
 ARG TOMCAT_REL="9"
-ARG TOMCAT_VERSION="9.0.52"
-ARG GUACAMOLE_VERSION="1.3.0"
+ARG TOMCAT_VERSION="9.0.58"
+ARG GUACAMOLE_VERSION="1.4.0"
 
 FROM jupyter/base-notebook:python-3.7.6
 
@@ -60,7 +60,7 @@ ENV LC_ALL en_US.UTF-8
 # Install Apache Guacamole
 ARG GUACAMOLE_VERSION
 WORKDIR /etc/guacamole
-RUN wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERSION}/source/guacamole-server-1.3.0.tar.gz" -O /etc/guacamole/guacamole-server-${GUACAMOLE_VERSION}.tar.gz \
+RUN wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERSION}/source/guacamole-server-${GUACAMOLE_VERSION}.tar.gz" -O /etc/guacamole/guacamole-server-${GUACAMOLE_VERSION}.tar.gz \
     && tar xvf /etc/guacamole/guacamole-server-${GUACAMOLE_VERSION}.tar.gz \
     && cd /etc/guacamole/guacamole-server-${GUACAMOLE_VERSION} \
     && ./configure --with-init-dir=/etc/init.d \
@@ -71,8 +71,8 @@ RUN wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERS
 
 # Create Guacamole configurations
 COPY --chown=root:root config/user-mapping.xml /etc/guacamole/user-mapping.xml
-RUN echo "user-mapping: /etc/guacamole/user-mapping.xml" > /etc/guacamole/guacamole.properties \
-    && touch /etc/guacamole/user-mapping.xml
+COPY --chown=root:root config/guacamole.properties /etc/guacamole/guacamole.properties
+COPY --chown=root:root config/guacd.conf /etc/guacamole/guacd.conf
 
 # Add Visual Studio code and nextcloud client
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
@@ -203,7 +203,7 @@ RUN wget https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_REL}/v${TOMCAT_V
     && tar -xf /tmp/apache-tomcat-${TOMCAT_VERSION}.tar.gz -C /tmp \
     && mv /tmp/apache-tomcat-${TOMCAT_VERSION} /home/jovyan/.tomcat \
     && rm -rf /home/jovyan/.tomcat/webapps/* \
-    && wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERSION}/binary/guacamole-1.3.0.war" -O /home/jovyan/.tomcat/webapps/ROOT.war
+    && wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERSION}/binary/guacamole-${GUACAMOLE_VERSION}.war" -O /home/jovyan/.tomcat/webapps/ROOT.war
 
 RUN pip install jupyter-server-proxy
 COPY config/jupyter_notebook_config.py  /home/jovyan/.jupyter

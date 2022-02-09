@@ -1,7 +1,10 @@
 # jupyter-remote-desktop-proxy
 
-Open in
-http://168.138.100.96/v2/gh/NeuroDesk/jupyter-remote-desktop-proxy/demo?urlpath=neurodesktop
+Production
+http://168.138.100.96/v2/gh/NeuroDesk/jupyter-remote-desktop-proxy/demo
+
+Testing
+http://192.9.172.90/v2/gh/NeuroDesk/jupyter-remote-desktop-proxy/k8s
 
 Start New > neurodesktop
 
