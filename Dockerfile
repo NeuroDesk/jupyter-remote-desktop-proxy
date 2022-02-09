@@ -71,8 +71,8 @@ RUN wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERS
 
 # Create Guacamole configurations
 COPY --chown=root:root config/user-mapping.xml /etc/guacamole/user-mapping.xml
-RUN echo "user-mapping: /etc/guacamole/user-mapping.xml" > /etc/guacamole/guacamole.properties \
-    && touch /etc/guacamole/user-mapping.xml
+COPY --chown=root:root config/guacamole.properties /etc/guacamole/guacamole.properties
+COPY --chown=root:root config/guacd.conf /etc/guacamole/guacd.conf
 
 # Add Visual Studio code and nextcloud client
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
