@@ -205,9 +205,6 @@ RUN wget https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_REL}/v${TOMCAT_V
     && rm -rf /home/jovyan/.tomcat/webapps/* \
     && wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERSION}/binary/guacamole-${GUACAMOLE_VERSION}.war" -O /home/jovyan/.tomcat/webapps/ROOT.war
 
-RUN pip install jupyter-server-proxy
-COPY config/jupyter_notebook_config.py  /home/jovyan/.jupyter
-
 COPY --chown=jovyan:users config/neurodesktop.sh /home/jovyan/.neurodesktop.sh
 RUN chmod +x /home/jovyan/.neurodesktop.sh
 
@@ -287,3 +284,5 @@ RUN mkdir -p /home/jovyan/.config \
     && ln -s /neurodesktop-storage/.config/Code .config/Code \
     && ln -s /neurodesktop-storage/.vscode .vscode
 
+RUN pip install jupyter-server-proxy
+COPY config/jupyter_notebook_config.py  /home/jovyan/.jupyter
