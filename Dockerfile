@@ -138,7 +138,7 @@ RUN apt-get update \
         davfs2 \
         owncloud-client \
         firefox \
-        nvidia-utils-510 \
+        nvidia-utils-450 \
     && rm -rf /var/lib/apt/lists/* \
     && rm /etc/apt/sources.list.d/vs-code.list
 
