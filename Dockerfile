@@ -138,6 +138,7 @@ RUN apt-get update \
         davfs2 \
         owncloud-client \
         firefox \
+        nvidia-utils-510 \
     && rm -rf /var/lib/apt/lists/* \
     && rm /etc/apt/sources.list.d/vs-code.list
 
@@ -271,6 +272,11 @@ RUN rm /tmp/skipcache \
 COPY config/neurodesk.ardc.edu.au.conf /cvmfs/neurodesk.ardc.edu.au.conf
 RUN mkdir -p /cvmfs/neurodesk.ardc.edu.au /cvmfs/cache/neurodesk.ardc.edu.au /cvmfs/logs/
 RUN chown -R jovyan:users /cvmfs/neurodesk.ardc.edu.au /cvmfs/logs /cvmfs/cache
+
+# RUN wget https://developer.download.nvidia.com/compute/cuda/11.5.0/local_installers/cuda_11.5.0_495.29.05_linux.run \
+#     && chmod +x cuda_11.5.0_495.29.05_linux.run \
+#     && ./cuda_11.5.0_495.29.05_linux.run --toolkit --silent --override \
+#     && rm cuda_11.5.0_495.29.05_linux.run
 
 USER jovyan
 WORKDIR /home/jovyan
